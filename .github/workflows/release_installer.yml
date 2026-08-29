@@ -9,7 +9,7 @@ on:
       version:
         description: 'Version to build (e.g. 0.2.0)'
         required: true
-        default: '0.2.0'
+        default: '1.2.0'
 
 permissions:
   contents: write
@@ -26,44 +26,64 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install dependencies
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r workspace/installer/requirements.txt
+          pip install -r workspace/installer/requirements-dev.txt
           pip install pyinstaller
 
-      - name: Run core tests
+      - name: Remove enum34 (obsolete backport, blocks PyInstaller)
+        # A transitive dependency in requirements.txt pulls in enum34, which
+        # PyInstaller refuses to run with (it shadows the stdlib enum module
+        # on Python 3). workspace/installer/build_installer.py already works
+        # around this locally (cleanup_obsolete_packages()) - mirrored here
+        # since the CI venv is built fresh from requirements.txt each run.
+        run: pip uninstall -y enum34
+
+      - name: Run backend tests
         env:
           PYTHONPATH: src
         run: python -m unittest discover -s workspace/debug/tests
 
-      - name: Run installer tests
-        run: python -m unittest discover -s workspace/debug/installer/tests
+      - name: Publish WinUI 3 frontend
+        run: >
+          dotnet publish src/TARNO.UI/TARNO.UI.csproj
+          -c Release -r win-x64 --self-contained true -p:Platform=x64
 
-      - name: Build Public Edition
-        run: |
-          python -m workspace.debug.installer.pipeline.build_all --edition public --version ${{ github.ref_name || inputs.version }}
+      - name: Build PyInstaller bundle (backend)
+        working-directory: workspace/installer
+        run: pyinstaller --noconfirm "Tarno Mesh.spec"
 
-      - name: Build Developer Edition
-        run: |
-          python -m workspace.debug.installer.pipeline.build_all --edition developer --version ${{ github.ref_name || inputs.version }}
+      - name: Install Inno Setup
+        run: choco install innosetup --no-progress -y
 
-      - name: Sign installers (if certificate configured)
-        env:
-          CODESIGN_CERT: ${{ secrets.CODESIGN_CERT }}
-          CODESIGN_PASSWORD: ${{ secrets.CODESIGN_PASSWORD }}
+      - name: Compile Windows installer
+        working-directory: workspace/installer
         run: |
-          python workspace/debug/installer/scripts/sign_installer.py --version ${{ github.ref_name || inputs.version }}
+          $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+          & $iscc "setup.iss"
 
       - name: Generate checksums
+        working-directory: workspace/installer/Output
         run: |
-          python workspace/debug/installer/scripts/checksums.py --version ${{ github.ref_name || inputs.version }} --output workspace/debug/installer/dist/artifacts/SHA256SUMS.txt
+          Get-ChildItem -Filter *.exe | ForEach-Object {
+            $hash = Get-FileHash $_.FullName -Algorithm SHA256
+            "$($hash.Hash.ToLower())  $($_.Name)" | Out-File -Append -Encoding utf8 SHA256SUMS.txt
+          }
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: tarno-installers
-          path: workspace/debug/installer/dist/artifacts/**
+          name: tarno-installer
+          path: |
+            workspace/installer/Output/*.exe
+            workspace/installer/Output/SHA256SUMS.txt
 
       - name: Create draft release
         if: startsWith(github.ref, 'refs/tags/')
@@ -71,6 +91,5 @@ jobs:
         with:
           draft: true
           files: |
-            workspace/debug/installer/dist/artifacts/TARNO_Setup_*/TARNO_Setup_*.exe
-            workspace/debug/installer/dist/artifacts/TARNO_Setup_*/install-info.json
-            workspace/debug/installer/dist/artifacts/SHA256SUMS.txt
+            workspace/installer/Output/*.exe
+            workspace/installer/Output/SHA256SUMS.txt
