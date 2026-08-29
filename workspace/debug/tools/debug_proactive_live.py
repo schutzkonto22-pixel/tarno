@@ -3,7 +3,7 @@
 Unterschied zu debug_proactive_voice.py (das mit vorgefertigten
 ProactiveDraft-Texten arbeitet, siehe SCENARIOS dort): dieses Skript startet
 den echten ProactiveEngine mit den echten Observer-Klassen aus
-tarno/core/proactive_engine.py, die echte Systemwerte (psutil), das echte
+tarno_backend/core/proactive_engine.py, die echte Systemwerte (psutil), das echte
 aktuell fokussierte Fenster (get_active_window) und eine echte .ics-Kalender-
 datei lesen. Es werden also reale, gerade gemessene Zustaende ausgewertet -
 nicht erfundene Beispieltexte.

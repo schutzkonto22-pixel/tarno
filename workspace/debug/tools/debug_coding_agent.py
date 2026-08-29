@@ -1,5 +1,5 @@
 """Debug-Konsole fuer den neuen native Coding-Agent-Backend
-(tarno/ai/coding/adapters/native_agent.py) - fuehrt eine Reihe verschiedener
+(tarno_backend/ai/coding/adapters/native_agent.py) - fuehrt eine Reihe verschiedener
 Test-Aufgaben direkt gegen einen kleinen Wegwerf-Workspace aus und zeigt jeden
 CodingOutput-Schritt live an, damit man sofort sieht, ob/wie das Modell
 Tools nutzt, editiert und verifiziert - ohne den Umweg ueber gRPC/UI/

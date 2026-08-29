@@ -1,6 +1,6 @@
 """Debug-Konsole fuer den JARVIS-Proaktiv-Layer (ProactiveEngine + Umformulierung
-+ echte Sprachausgabe, tarno/core/proactive_engine.py + tarno/ai/prompts/
-proactive_system.py + tarno/voice/synthesizer.py).
++ echte Sprachausgabe, tarno_backend/core/proactive_engine.py + tarno_backend/ai/prompts/
+proactive_system.py + tarno_backend/voice/synthesizer.py).
 
 Ziel: reale, sich ueber die Zeit veraendernde Szenarien durchspielen (jede
 Stufe baut auf der vorherigen TARNO-Reaktion auf - z.B. "Ablenkung seit 5min"

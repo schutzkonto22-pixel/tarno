@@ -1,7 +1,7 @@
 """Dev-only mock sender for the Dynamic Hybrid Mesh feature (mesh.enabled).
 
 Simulates UDP broadcast traffic from Node A (ZTE phone) and Node B (ESP32-S3
-scanner), matching the exact wire format `tarno/integrations/mesh/payload.py`
+scanner), matching the exact wire format `tarno_backend/integrations/mesh/payload.py`
 expects, so Phase 1 (this PC's mesh plugin) can be exercised end-to-end
 without any real phone/ESP32 hardware.
 
