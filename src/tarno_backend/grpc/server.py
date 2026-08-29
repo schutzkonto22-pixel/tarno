@@ -12,14 +12,12 @@ import asyncio
 import logging
 import subprocess
 import sys
-import threading
 import time
 import traceback
 import uuid
 from concurrent.futures import Future, ThreadPoolExecutor
-from datetime import timedelta
 from pathlib import Path
-from typing import Any, AsyncIterator, Callable
+from typing import Any, AsyncIterator
 
 import grpc
 
@@ -30,7 +28,6 @@ from tarno_backend.core.events import (
     CodingOutputEvent,
     ContextUsageEvent,
     ErrorEvent,
-    Event,
     EventBus,
     ProcessingStageEvent,
     ResponseReadyEvent,
@@ -728,7 +725,8 @@ class TarnoGrpcBridge:
         # kann is_stale() noch weit nach dieser Coroutine abfragen (siehe
         # _cleanup_orphaned_generation unten, die den Discard aus dem
         # finally-Block dieser Funktion herausgezogen hat).
-        is_stale: Callable[[], bool] = lambda: my_generation in self._cancelled_generations
+        def is_stale() -> bool:
+            return my_generation in self._cancelled_generations
 
         async def _process() -> None:
             log.debug("Starting engine processing for: %r (Generation %d)", text, my_generation)
@@ -1578,7 +1576,6 @@ class TarnoGrpcBridge:
             return await loop.run_in_executor(self._executor, self._blocking_dictate, eagerness)
 
     def _blocking_dictate(self, eagerness: str) -> tuple[bool, str, str]:
-        from tarno_backend.core.config import vad_config_for_eagerness
         from tarno_backend.voice.audio_stream import AudioStream, AudioStreamSource
         from tarno_backend.voice.faster_whisper_recognizer import FasterWhisperRecognizer
 

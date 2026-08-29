@@ -16,11 +16,10 @@ from __future__ import annotations
 import asyncio
 import logging
 import re
-import time
 from concurrent.futures import ThreadPoolExecutor
 from typing import TYPE_CHECKING, Any, Callable
 
-from tarno_backend.ai.pool.models import PoolAgentSpec, PoolConfig, PoolMessage, SubTask
+from tarno_backend.ai.pool.models import PoolConfig, PoolMessage, SubTask
 from tarno_backend.ai.pool.worker import PoolWorker, run_with_tool_loop, workspace_label
 from tarno_backend.ai.prompts.pool_system import (
     LEAD_MERGE_SYSTEM_PROMPT,

@@ -6,7 +6,6 @@ import logging
 import queue
 import threading
 import time
-from typing import Any
 
 import pyaudio
 

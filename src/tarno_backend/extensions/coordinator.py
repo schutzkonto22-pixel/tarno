@@ -7,9 +7,9 @@ from typing import Any, Callable
 
 from tarno_backend.core.action_result import ActionResult
 from tarno_backend.extensions.reminder import ReminderEngine
-from tarno_backend.extensions.routines import Routine, RoutineRunner, RoutineStep
+from tarno_backend.extensions.routines import RoutineRunner
 from tarno_backend.extensions.scheduler import BriefingScheduler, TarnoScheduler, ScheduledTask
-from tarno_backend.extensions.task_planner import PlannedTask, TaskPlanner, TaskStatus
+from tarno_backend.extensions.task_planner import PlannedTask, TaskPlanner
 
 log = logging.getLogger(__name__)
 

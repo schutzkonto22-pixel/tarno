@@ -16,7 +16,6 @@ from pathlib import Path
 from typing import Any
 
 import requests
-import yaml
 
 log = logging.getLogger(__name__)
 

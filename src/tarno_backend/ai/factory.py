@@ -10,6 +10,7 @@ from typing import TYPE_CHECKING
 from tarno_backend.ai.fallback_provider import FallbackProvider
 from tarno_backend.ai.openai_compatible import OpenAICompatibleProvider
 from tarno_backend.ai.provider import RateLimiter
+from tarno_backend.core.config import OpenAICompatibleConfig
 from tarno_backend.security.secrets import SecretsVault
 
 if TYPE_CHECKING:

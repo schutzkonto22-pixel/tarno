@@ -10,7 +10,6 @@ import sys
 import time
 from collections import deque
 from pathlib import Path
-from typing import Any
 
 from tarno_backend.core.action_result import ActionResult
 from tarno_backend.core.command_engine import CommandEngine, PreparedCommand
@@ -158,7 +157,7 @@ class ShellExecutor:
     ) -> ActionResult:
         """Synchronous wrapper around execute() for callers without an event loop."""
         try:
-            loop = asyncio.get_running_loop()
+            asyncio.get_running_loop()
         except RuntimeError:
             return asyncio.run(self.execute(prepared, dry_run=dry_run, cwd=cwd))
         # Already inside a running loop: schedule on a separate thread if needed.

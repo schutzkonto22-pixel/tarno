@@ -174,7 +174,6 @@ _log.info("OVOS runtime paths: XDG_CONFIG_HOME=%s XDG_CACHE_HOME=%s XDG_DATA_HOM
 _log.info("Project root: %s, bundle config root: %s, frozen: %s", _PROJECT_ROOT, _BUNDLE_CONFIG_ROOT, getattr(sys, "frozen", False))
 
 from ovos_bus_client import MessageBusClient
-from ovos_bus_client.message import Message
 from ovos_config.config import Configuration
 from ovos_core.skill_manager import SkillManager
 from ovos_messagebus import __main__ as messagebus_service

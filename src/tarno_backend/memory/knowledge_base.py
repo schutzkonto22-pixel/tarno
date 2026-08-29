@@ -9,11 +9,9 @@ from __future__ import annotations
 
 import logging
 import sqlite3
-import struct
 import threading
 from datetime import datetime
 from pathlib import Path
-from typing import TYPE_CHECKING, Sequence
 
 import numpy as np
 
@@ -24,9 +22,6 @@ from tarno_backend.memory.embeddings import (
     get_default_provider as _get_default_provider,
     vector_to_blob as _vector_to_blob,
 )
-
-if TYPE_CHECKING:
-    from numpy.typing import NDArray
 
 log = logging.getLogger(__name__)
 

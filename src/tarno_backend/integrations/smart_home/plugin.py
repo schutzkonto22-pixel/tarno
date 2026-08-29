@@ -8,7 +8,6 @@ from tarno_backend.ai.tool_registry import ToolDefinition
 from tarno_backend.core.action_result import ActionResult
 from tarno_backend.integrations.smart_home.client import (
     HomeAssistantBackend,
-    SmartHomeBackend,
     SmartHomeClient,
 )
 from tarno_backend.plugins.base import BasePlugin

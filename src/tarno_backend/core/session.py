@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any
 
-from tarno_backend.telemetry.logging import get_correlation_id, set_correlation_id
+from tarno_backend.telemetry.logging import set_correlation_id
 
 
 @dataclass

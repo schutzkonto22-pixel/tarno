@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime, timedelta
 from enum import Enum
-from typing import Any, Callable
+from typing import Callable
 
 from tarno_backend.core.command_engine import PreparedCommand, RiskLevel
 from tarno_backend.core.exceptions import PermissionDeniedError

@@ -5,8 +5,8 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from PySide6.QtCore import Qt, QThread, Signal
-from PySide6.QtGui import QFont, QIcon
+from PySide6.QtCore import Qt, Signal
+from PySide6.QtGui import QFont
 from PySide6.QtWidgets import (
     QApplication,
     QHBoxLayout,
@@ -14,7 +14,6 @@ from PySide6.QtWidgets import (
     QLineEdit,
     QMainWindow,
     QPushButton,
-    QScrollArea,
     QSplitter,
     QTextEdit,
     QVBoxLayout,

@@ -12,6 +12,7 @@ from tarno_backend.voice.audio_stream import AudioStream, AudioStreamSource
 
 if TYPE_CHECKING:
     from tarno_backend.core.config import TarnoConfig
+    from tarno_backend.voice.recognizer import SpeechRecognizer
 
 log = logging.getLogger(__name__)
 
@@ -118,8 +119,6 @@ class VoiceWorker(QObject):
             self.listening_stopped.emit()
 
     def _run_push_to_talk(self, recognizer: "SpeechRecognizer") -> None:
-        from tarno_backend.voice.recognizer import SpeechRecognizer
-
         self.listening_started.emit()
         while self._active:
             self._recognize_and_emit(recognizer)

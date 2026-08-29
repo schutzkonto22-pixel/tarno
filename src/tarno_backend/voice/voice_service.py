@@ -5,7 +5,6 @@ from __future__ import annotations
 import logging
 import threading
 import time
-from typing import TYPE_CHECKING
 
 from ovos_bus_client import MessageBusClient
 from ovos_bus_client.message import Message
@@ -16,9 +15,6 @@ from tarno_backend.voice.audio_stream import AudioStream, AudioStreamSource
 from tarno_backend.voice.faster_whisper_recognizer import FasterWhisperRecognizer
 from tarno_backend.voice.synthesizer import SpeechSynthesizer
 from tarno_backend.voice.wakeword import WakeWordDetector
-
-if TYPE_CHECKING:
-    from ovos_bus_client import MessageBusClient
 
 log = logging.getLogger(__name__)
 

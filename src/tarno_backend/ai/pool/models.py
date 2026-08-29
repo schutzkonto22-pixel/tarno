@@ -10,7 +10,7 @@ selbst bekommt dadurch keinen neuen Pool-Code.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Literal
 
 from tarno_backend.ai.pool.exceptions import InvalidPoolConfigError

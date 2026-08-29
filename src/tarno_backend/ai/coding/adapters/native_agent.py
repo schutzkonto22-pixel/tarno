@@ -29,7 +29,7 @@ from tarno_backend.ai.coding.adapters.base import CodingBackend, OnOutput
 from tarno_backend.ai.coding.native_tools import build_native_coding_tools
 from tarno_backend.ai.coding.protocol import CodingOutput
 from tarno_backend.ai.factory import create_provider
-from tarno_backend.ai.prompts.code_system import CODE_SYSTEM_PROMPT, CONTINUE_REMINDER, build_workspace_prompt
+from tarno_backend.ai.prompts.code_system import CODE_SYSTEM_PROMPT, build_workspace_prompt
 
 log = logging.getLogger(__name__)
 

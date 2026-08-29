@@ -12,7 +12,7 @@ import logging
 import threading
 import time
 from enum import Enum
-from typing import TYPE_CHECKING, Callable
+from typing import TYPE_CHECKING, Any, Callable
 
 from tarno_backend.voice.echo_protection import EchoProtection
 

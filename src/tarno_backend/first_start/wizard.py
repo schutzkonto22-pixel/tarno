@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import sys
 
-from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication, QWizard
 
 from tarno_backend.first_start.config_initializer import ConfigInitializer

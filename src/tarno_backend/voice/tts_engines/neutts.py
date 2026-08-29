@@ -14,7 +14,7 @@ from tarno_backend.voice.voice_reference import default_reference_path, default_
 
 try:
     from neutts import NeuTTS
-except ImportError as _neutts_import_error:
+except ImportError:
     NeuTTS = None  # type: ignore[assignment, misc]
 
 from tarno_backend.voice.tts_engines.base import BaseTTSEngine, TTSAudioChunk

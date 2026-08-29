@@ -4,14 +4,13 @@ from __future__ import annotations
 
 import importlib
 import importlib.util
-import json
 import logging
 from pathlib import Path
 from typing import Any
 
 import yaml
 
-from tarno_backend.ai.tool_registry import ToolDefinition, ToolRegistry
+from tarno_backend.ai.tool_registry import ToolRegistry
 from tarno_backend.plugins.plugin import TarnoPlugin
 
 log = logging.getLogger(__name__)

@@ -9,7 +9,6 @@ import time
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from tarno_backend.ai.provider import LLMProvider
     from tarno_backend.core.config import BriefingConfig
     from tarno_backend.core.agent_service import AgentService
 

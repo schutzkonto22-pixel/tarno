@@ -17,7 +17,6 @@ from tarno_backend.ui.engine_controller import EngineController
 from tarno_backend.ui.settings_dialog import SettingsDialog
 from tarno_backend.ui.theme import get_stylesheet
 from tarno_backend.ui.tray import TrayIcon
-from tarno_backend.utils.log import setup_logging
 
 log = logging.getLogger(__name__)
 
@@ -58,8 +57,8 @@ def run_ui(config: TarnoConfig) -> None:
     listener = BusListener()
     window = ControlWindow()
     # The permanent hologram overlay is disabled because it blocks the desktop.
-    # OverlayWindow is kept for a future optional boot/loading animation.
-    overlay: OverlayWindow | None = None
+    # OverlayWindow (tarno_backend.ui.overlay_window) is kept for a future
+    # optional boot/loading animation.
     tray = TrayIcon()
     tray.setIcon(app.windowIcon())
 

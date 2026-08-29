@@ -15,6 +15,8 @@ from __future__ import annotations
 import logging
 import time
 
+import numpy as np
+
 from tarno_backend.core.proactive_engine import ProactiveDraft
 from tarno_backend.vision.camera_capture import CameraCapture
 from tarno_backend.vision.motion_gate import MotionGate

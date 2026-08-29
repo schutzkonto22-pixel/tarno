@@ -3,15 +3,13 @@
 from __future__ import annotations
 
 import logging
-from typing import Any
 
-from PySide6.QtCore import QObject, QThread, Signal, Slot
+from PySide6.QtCore import QObject, Signal, Slot
 
 from tarno_backend.ai.conversation import ConversationManager
 from tarno_backend.ai.provider import LLMProvider, LLMResponse
 from tarno_backend.ai.response_guard import guard_response
 from tarno_backend.ai.tool_registry import ToolRegistry
-from tarno_backend.core.action_result import ActionResult
 
 log = logging.getLogger(__name__)
 

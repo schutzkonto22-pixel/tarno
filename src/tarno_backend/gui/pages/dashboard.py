@@ -8,7 +8,6 @@ from PySide6.QtWidgets import (
     QGridLayout,
     QHBoxLayout,
     QLabel,
-    QPushButton,
     QScrollArea,
     QVBoxLayout,
     QWidget,
@@ -194,9 +193,9 @@ class DashboardPage(QWidget):
         for key, label in [("cpu", "CPU"), ("ram", "RAM"), ("gpu", "GPU")]:
             row = QHBoxLayout()
             row.setSpacing(8)
-            l = QLabel(label)
-            l.setStyleSheet(f"background: transparent; color: {COLORS['text_secondary']};")
-            row.addWidget(l)
+            key_label = QLabel(label)
+            key_label.setStyleSheet(f"background: transparent; color: {COLORS['text_secondary']};")
+            row.addWidget(key_label)
             row.addStretch()
             v = QLabel("Wird ermittelt...")
             v.setStyleSheet("background: transparent;")

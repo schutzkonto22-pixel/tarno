@@ -6,7 +6,6 @@ import logging
 from pathlib import Path
 
 from tarno_backend.core.config import TarnoConfig
-from tarno_backend.model_manager import ModelInfo, ModelManager
 
 log = logging.getLogger(__name__)
 

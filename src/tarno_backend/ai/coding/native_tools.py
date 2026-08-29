@@ -31,7 +31,7 @@ from typing import Any
 
 from tarno_backend.ai.tool_registry import ToolDefinition, ToolRegistry
 from tarno_backend.core.workspace import is_allowed, list_roots, resolve_for_read, resolve_for_write
-from tarno_backend.desktop.file_manager import list_directory, read_file, search_files, write_file
+from tarno_backend.desktop.file_manager import list_directory, search_files, write_file
 
 log = logging.getLogger(__name__)
 

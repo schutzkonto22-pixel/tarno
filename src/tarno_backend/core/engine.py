@@ -8,7 +8,7 @@ import time
 import uuid
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import TYPE_CHECKING, Callable
+from typing import TYPE_CHECKING, Any, Callable
 
 from tarno_backend.ai.context.output_compressor import compress_tool_output_detailed
 from tarno_backend.ai.context.summarizer import HistorySummarizer
@@ -18,7 +18,7 @@ from tarno_backend.ai.persona_guard import PersonaGuard
 from tarno_backend.ai.factory import create_provider_with_fallback as _create_provider
 from tarno_backend.ai.coding.agent import CodingAgent
 from tarno_backend.ai.coding.tool import build_coding_task_tool
-from tarno_backend.ai.provider import LLMProvider, LLMResponse, ToolCall
+from tarno_backend.ai.provider import LLMResponse, ToolCall
 from tarno_backend.ai.response_guard import guard_response
 from tarno_backend.core.action_result import ActionResult
 from tarno_backend.ai.prompts.code_system import CONTINUE_REMINDER
@@ -90,6 +90,7 @@ from tarno_backend.voice.synthesizer import SpeechSynthesizer
 if TYPE_CHECKING:
     from tarno_backend.core.config import TarnoConfig
     from tarno_backend.vision.vision_observer import VisionObserver
+    from tarno_backend.voice.recognizer import SpeechRecognizer
 
 log = logging.getLogger(__name__)
 

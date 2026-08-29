@@ -13,7 +13,6 @@ from typing import Any
 
 from tarno_backend.ai.tool_registry import ToolDefinition
 from tarno_backend.core.action_result import ActionResult
-from tarno_backend.core.exceptions import PermissionDeniedError
 
 
 class BasePlugin(ABC):

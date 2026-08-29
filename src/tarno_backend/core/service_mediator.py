@@ -10,7 +10,6 @@ from PySide6.QtCore import QObject, QThread, Qt, Signal, Slot
 
 from tarno_backend.ai.conversation import ConversationManager
 from tarno_backend.ai.factory import create_provider_with_fallback as _create_provider
-from tarno_backend.ai.provider import LLMProvider
 from tarno_backend.ai.tool_registry import ToolDefinition, ToolRegistry
 from tarno_backend.browser.web_control import web_search
 from tarno_backend.desktop.app_control import open_application
@@ -23,7 +22,7 @@ from tarno_backend.desktop.system_info import get_system_info
 from tarno_backend.extensions.coordinator import ExtensionCoordinator
 from tarno_backend.telemetry.logging import new_correlation_id, set_correlation_id
 from tarno_backend.memory.store import MemoryStore
-from tarno_backend.voice.audio_manager import AudioManager, AudioState
+from tarno_backend.voice.audio_manager import AudioManager
 from tarno_backend.voice.echo_protection import EchoProtection
 from tarno_backend.voice.synthesizer import SpeechSynthesizer
 from tarno_backend.workers.llm_worker import LLMWorker
